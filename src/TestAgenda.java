@@ -74,7 +74,7 @@ public class TestAgenda {
 
 	private static void separador() {
 		System.out.println(
-				"------------------------------------------------------------");
+				"------------------------------------------------------------Carla Barberia");
 
 	}
 
