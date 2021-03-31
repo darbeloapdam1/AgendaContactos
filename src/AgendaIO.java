@@ -1,3 +1,4 @@
+import java.awt.Point;
 
 /**
  * Utilidades para cargar la agenda
@@ -9,7 +10,19 @@ public class AgendaIO {
 	}
 
 	private static Contacto parsearLinea(String linea) {
-		return null;
+		String[] tokens = linea.split(",");
+		String nombre = tokens[1].trim();
+		String apellidos = tokens[2].trim();
+		String telefono = tokens[3].trim();
+		String email = tokens[4].trim();
+		String empresa = tokens[4].trim();
+
+		int num = tokens[0].trim().charAt(0);
+		if (num == '1') {
+			return new Profesional(nombre, apellidos, telefono, email, empresa);
+		} else {
+			return new Personal(nombre, apellidos, telefono, email);
+		}
 
 	}
 
@@ -24,7 +37,7 @@ public class AgendaIO {
 				"1, Isabel, Acosta Mendioroz,  678895433 ,  iacostamen@gmail.com ,  walden estrella ",
 				"2,  pedro , urruti tello , 616789654 ,  urrutitello@gmail.com , 09/03/2007, amigos",
 				"1, Angel , Esteban Grande , 674544123 ,  aestebang@gmail.com ,  magma publicidad ",
-				"2, elena , bueno ganuza , 6786547699 ,  ebuenogan@gmail.com , 17/03/2000, amigos",
+				"2, elena , bueno ganuza , 678654/7699 ,  ebuenogan@gmail.com , 17/03/2000, amigos",
 				"2, amaia , romero sein , 642222343 ,  aromerosein@gmail.com , 09/03/2012, pareja",
 				"2, Ignacio ,  Anto roth ,  688912799 , iantoroth@gmail.com ,  11/11/1969 , padre",
 				"1,  Isabel ,  Acosta Marin , 678895433 ,  iacostamar@gmail.com ,  publicidad holdings ",
