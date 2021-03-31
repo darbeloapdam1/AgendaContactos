@@ -91,7 +91,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 			}
 		}
 		if(this.getApellidos().compareToIgnoreCase(c1.getApellidos()) > 0) {
-			
+			return 1;
 		}
 		return -1;
 	}
