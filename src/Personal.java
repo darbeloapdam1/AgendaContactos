@@ -6,7 +6,7 @@ public class Personal extends Contacto {
 	}
 
 	@Override
-	public String mensaje() {
+	public String getFirmaEmail() {
 		// TODO Auto-generated method stub
 		return null;
 	}

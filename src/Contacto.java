@@ -49,7 +49,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 		return apellidos.charAt(0);
 	}
 	
-	public abstract String mensaje();
+	public abstract String getFirmaEmail();
 	
 	@Override
 	public String toString() {

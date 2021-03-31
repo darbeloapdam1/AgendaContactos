@@ -26,7 +26,7 @@ public class Profesional extends Contacto {
 	}
 
 	@Override
-	public String mensaje() {
+	public String getFirmaEmail() {
 		String[] firma = {"Atentamente", "Saludos", "Saludos cordiales", "Mis mejores deseos"};
 		return firma[(int) (Math.random() * 3)];
 	}
