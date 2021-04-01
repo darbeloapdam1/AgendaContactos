@@ -6,8 +6,9 @@ public class Personal extends Contacto {
 	private Relacion relacion;
 	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
-		fecha.replace("/", "-");
-		fecha_nacimiento = LocalDate.parse(fecha);	
+		String[] fechaNa = fecha.split("/");
+		String nuevaFecha = fechaNa[2] + "-" + fechaNa[1] + "-" + fechaNa[0];
+		fecha_nacimiento = LocalDate.parse(nuevaFecha);	
 		this.setRelacion(relacion);
 	}
 
@@ -31,7 +32,7 @@ public class Personal extends Contacto {
 
 	@Override
 	public String getFirmaEmail() {
-		return "Un abrazo";
+		return "Un abrazo!!";
 	}
 	
 	private String queMes(int mes) {
@@ -68,7 +69,7 @@ public class Personal extends Contacto {
 	public String toString() {
 		String str = super.toString();
 		str += "\nFecha nacimiento: " + fecha_nacimiento.getDayOfMonth() + " " + queMes(fecha_nacimiento.getMonthValue()) + " " + fecha_nacimiento.getYear()
-		+ "\nRelacion: " + relacion.toString();
+		+ "\nRelacion: " + relacion.toString() + "\n";
 		return str;
 	}
 	
