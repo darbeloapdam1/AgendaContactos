@@ -9,7 +9,7 @@ public class AgendaContactos {
 
 	}
 
-	public void añadirContacto() {
+	public void añadirContacto(Contacto con) {
 
 	}
 
