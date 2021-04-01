@@ -44,5 +44,16 @@ public class Profesional extends Contacto {
 		String str = ("Contactos profesionales" + "\n" + super.toString() + "\nEmpresa: " + empresa);
 		return str;
 	}
+	
+	@Override 
+	public boolean equals(Object obj) {
+		if(super.equals(obj)) {
+			Profesional pro = (Profesional) obj;
+			if(this.getEmpresa().equals(pro.getEmpresa())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
