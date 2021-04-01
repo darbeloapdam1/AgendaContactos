@@ -6,7 +6,11 @@ import java.awt.Point;
 public class AgendaIO {
 
 	public static void importar(AgendaContactos agenda) {
-
+		String[] contactos = obtenerLineasDatos();
+		for(String linea:contactos) {
+			Contacto con = parsearLinea(linea);
+			agenda.añadirContacto(con);
+		}
 	}
 
 	private static Contacto parsearLinea(String linea) {
@@ -15,13 +19,16 @@ public class AgendaIO {
 		String apellidos = tokens[2].trim();
 		String telefono = tokens[3].trim();
 		String email = tokens[4].trim();
-		String empresa = tokens[4].trim();
+		
 
 		int num = tokens[0].trim().charAt(0);
 		if (num == '1') {
+			String empresa = tokens[5].trim();
 			return new Profesional(nombre, apellidos, telefono, email, empresa);
 		} else {
-			return new Personal(nombre, apellidos, telefono, email);
+			String fecha_nacimiento = tokens[5];
+			String relacion = tokens[6];
+			return new Personal(nombre, apellidos, telefono, email, fecha_nacimiento, relacion);
 		}
 
 	}
