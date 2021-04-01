@@ -28,9 +28,18 @@ public class AgendaIO {
 		} else {
 			String fecha_nacimiento = tokens[5];
 			String relacion = tokens[6];
-			return new Personal(nombre, apellidos, telefono, email, fecha_nacimiento, relacion);
+			return new Personal(nombre, apellidos, telefono, email, fecha_nacimiento, queRelacion(relacion));
 		}
 
+	}
+	private static Relacion queRelacion(String relacion2) {
+		Relacion[] relaciones = Relacion.values();
+		for(Relacion rel: relaciones) {
+			if(rel.getRelacion().equalsIgnoreCase(relacion2)) {
+				return rel;
+			}
+		}
+		return null;
 	}
 
 	/**
