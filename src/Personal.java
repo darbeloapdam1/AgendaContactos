@@ -4,22 +4,14 @@ public class Personal extends Contacto {
 
 	private LocalDate fecha_nacimiento;
 	private Relacion relacion;
-	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, String relacion) {
+	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
 		fecha.replace("/", "-");
 		fecha_nacimiento = LocalDate.parse(fecha);	
-		this.setRelacion(queRelacion(relacion));
+		this.setRelacion(relacion);
 	}
 
-	private Relacion queRelacion(String relacion2) {
-		Relacion[] relaciones = Relacion.values();
-		for(Relacion rel: relaciones) {
-			if(rel.getRelacion().equalsIgnoreCase(relacion2)) {
-				return rel;
-			}
-		}
-		return null;
-	}
+	
 
 	public LocalDate getFecha_nacimiento() {
 		return fecha_nacimiento;
