@@ -9,6 +9,7 @@ public enum Relacion {
 		this.relacion = string;
 	}
 	
+	// accesor para la relacion en String
 	public String getRelacion() {
 		return relacion;
 	}
