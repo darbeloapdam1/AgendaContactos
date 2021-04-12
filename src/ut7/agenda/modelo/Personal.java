@@ -13,7 +13,7 @@ public class Personal extends Contacto {
 		this.setRelacion(relacion);
 	}
 
-	
+	// accesores y mutadores
 
 	public LocalDate getFecha_nacimiento() {
 		return fecha_nacimiento;
@@ -35,7 +35,9 @@ public class Personal extends Contacto {
 	public String getFirmaEmail() {
 		return "Un abrazo!!";
 	}
-	
+	/*
+	 * Metod privado para ver la abreviacion del mes
+	 */
 	private String queMes(int mes) {
 		switch(mes) {
 		case 1: 
@@ -73,6 +75,11 @@ public class Personal extends Contacto {
 		+ "\nRelacion: " + relacion.toString() + "\n";
 		return str;
 	}
+	
+	/*
+	 * metodo para ver si es su cumpleaños
+	 * @return true o false si es su cumpleaños
+	 */
 	
 	public boolean esCumpleanos() {
 		LocalDate fecha = LocalDate.now();
