@@ -74,7 +74,8 @@ public class Personal extends Contacto {
 		return str;
 	}
 	
-	public boolean esCumpleanos(LocalDate fecha) {
+	public boolean esCumpleanos() {
+		LocalDate fecha = LocalDate.now();
 		if(fecha_nacimiento.getDayOfMonth() == fecha.getDayOfMonth()) {
 			if(fecha_nacimiento.getMonthValue() == fecha.getMonthValue()) {
 				return true;
