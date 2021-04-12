@@ -15,8 +15,8 @@ public class AgendaIO {
 	public static void importar(AgendaContactos agenda) {
 		String[] contactos = obtenerLineasDatos();
 		for(String linea:contactos) {
-			Contacto con = parsearLinea(linea);
-			agenda.añadirContacto(con);
+			Contacto con = parsearLinea(linea); // crear el contacto 
+			agenda.añadirContacto(con); // añadir el contacto a la agenda
 		}
 	}
 
@@ -39,6 +39,11 @@ public class AgendaIO {
 		}
 
 	}
+	
+	/*
+	 * @return rel la relacion del contacto
+	 */
+	
 	private static Relacion queRelacion(String relacion2) {
 		Relacion[] relaciones = Relacion.values();
 		for(Relacion rel: relaciones) {
