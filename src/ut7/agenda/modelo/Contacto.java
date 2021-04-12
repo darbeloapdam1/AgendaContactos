@@ -13,6 +13,8 @@ public abstract class Contacto implements Comparable<Contacto> {
 		this.telefono = telefono;
 		this.email = email.toLowerCase();
 	}
+	
+	// getters y setters
 
 	public String getNombre() {
 		return nombre;
@@ -51,6 +53,10 @@ public abstract class Contacto implements Comparable<Contacto> {
 	}
 	
 	public abstract String getFirmaEmail();
+	
+	/*
+	 * @return representacion del objeto
+	 */
 	
 	@Override
 	public String toString() {

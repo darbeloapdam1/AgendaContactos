@@ -21,7 +21,7 @@ public class AgendaIO {
 	}
 
 	private static Contacto parsearLinea(String linea) {
-		String[] tokens = linea.split(",");
+		String[] tokens = linea.split(","); // guardar cada dato de la linea
 		String nombre = tokens[1].trim();
 		String apellidos = tokens[2].trim();
 		String telefono = tokens[3].trim();
@@ -29,7 +29,7 @@ public class AgendaIO {
 		
 
 		int num = tokens[0].trim().charAt(0);
-		if (num == '1') {
+		if (num == '1') { // ver de que tipo es el contacto (1 = profesional, 2 = personal)
 			String empresa = tokens[5].trim();
 			return new Profesional(nombre, apellidos, telefono, email, empresa);
 		} else {
