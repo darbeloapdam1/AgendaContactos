@@ -35,37 +35,12 @@ public class Personal extends Contacto {
 	public String getFirmaEmail() {
 		return "Un abrazo!!";
 	}
-	/*
+	/**
 	 * Metod privado para ver la abreviacion del mes
-	 */
+	 **/
 	private String queMes(int mes) {
-		switch(mes) {
-		case 1: 
-			return "ene.";
-		case 2: 
-			return "feb.";
-		case 3: 
-			return "mar.";
-		case 4: 
-			return "abr.";
-		case 5: 
-			return "may.";
-		case 6: 
-			return "jun.";
-		case 7: 
-			return "jul.";
-		case 8: 
-			return "ago.";
-		case 9: 
-			return "sep.";
-		case 10: 
-			return "oct.";
-		case 11: 
-			return "nov.";
-		case 12: 
-			return "dic.";
-		}
-		return "";
+		String[] meses = {"ene.","feb.","mar.","abr.","may.","jun.","jul.","ago.","sep.","oct.","nov.","dic."};
+		return meses[mes];
 	}
 	
 	@Override
@@ -76,10 +51,10 @@ public class Personal extends Contacto {
 		return str;
 	}
 	
-	/*
+	/**
 	 * metodo para ver si es su cumpleaños
 	 * @return true o false si es su cumpleaños
-	 */
+	 **/
 	
 	public boolean esCumpleanos() {
 		LocalDate fecha = LocalDate.now();
@@ -87,15 +62,6 @@ public class Personal extends Contacto {
 			if(fecha_nacimiento.getMonthValue() == fecha.getMonthValue()) {
 				return true;
 			}
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(super.equals(obj)) {
-			Personal p = (Personal) obj;
-			return this.getFecha_nacimiento().equals(p.getFecha_nacimiento()) && this.getRelacion().equals(p.getRelacion());
 		}
 		return false;
 	}
