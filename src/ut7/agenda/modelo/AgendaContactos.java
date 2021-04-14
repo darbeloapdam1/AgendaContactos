@@ -90,20 +90,21 @@ public class AgendaContactos {
 
 	}
 
+	/**
+	 * 
+	 * @param letra la clave del Map 
+	 * @return ArrayList<Personal> lista de contactos personales ordenador por fecha de nacimiento
+	 */
+	
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
 		ArrayList<Personal> lista = new ArrayList<>();
-		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
-		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
+		Set<Contacto> contactos = agenda.get(letra);
+		Iterator<Contacto> it = contactos.iterator();
 		while(it.hasNext()) {
-			Map.Entry<Character,Set<Contacto>> entrada = it.next();
-			Set<Contacto> contactos = entrada.getValue();
-			Iterator<Contacto> it2 = contactos.iterator();
-			while(it2.hasNext()) {
-				Contacto contacto = it2.next();
-				if(contacto instanceof Personal){
-					Personal personal = (Personal) contacto;
-					lista.add(personal);
-				}
+			Contacto contacto = it.next();
+			if(contacto instanceof Personal) {
+				Personal personal = (Personal) contacto;
+				lista.add(personal);
 			}
 		}
 		
