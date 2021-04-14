@@ -1,5 +1,6 @@
 package ut7.agenda.modelo;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Personal extends Contacto {
 
@@ -37,7 +38,7 @@ public class Personal extends Contacto {
 	}
 	/**
 	 * Metod privado para ver la abreviacion del mes
-	 **/
+	 */
 	private String queMes(int mes) {
 		String[] meses = {"ene.","feb.","mar.","abr.","may.","jun.","jul.","ago.","sep.","oct.","nov.","dic."};
 		return meses[mes];
@@ -46,7 +47,8 @@ public class Personal extends Contacto {
 	@Override
 	public String toString() {
 		String str = super.toString();
-		str += "\nFecha nacimiento: " + fecha_nacimiento.getDayOfMonth() + " " + queMes(fecha_nacimiento.getMonthValue()) + " " + fecha_nacimiento.getYear()
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+		str += "\nFecha nacimiento: " + fecha_nacimiento.format(formatter)
 		+ "\nRelacion: " + relacion.toString() + "\n";
 		return str;
 	}
@@ -54,7 +56,7 @@ public class Personal extends Contacto {
 	/**
 	 * metodo para ver si es su cumpleaños
 	 * @return true o false si es su cumpleaños
-	 **/
+	 */
 	
 	public boolean esCumpleanos() {
 		LocalDate fecha = LocalDate.now();
