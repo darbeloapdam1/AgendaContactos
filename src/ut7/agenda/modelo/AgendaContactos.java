@@ -1,5 +1,8 @@
 package ut7.agenda.modelo;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,9 +38,22 @@ public class AgendaContactos {
 	
 	public List<Contacto> buscarContactos(String texto) {
 		ArrayList<Contacto> lista = new ArrayList<>();
-		
-		return null;
-
+		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
+		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
+		while(it.hasNext()) {
+			Map.Entry<Character,Set<Contacto>> entrada = it.next();
+			Set<Contacto> contactos = entrada.getValue();
+			Iterator<Contacto> it2 = contactos.iterator();
+			while(it2.hasNext()) {
+				Contacto contacto = it2.next();
+				if(contacto.getApellidos().contains(texto)) {
+					lista.add(contacto);
+				}else if(contacto.getNombre().contains(texto)) {
+					lista.add(contacto);
+				}
+			}
+		}
+		return lista;
 	}
 
 	public List<Personal> personalesEnLetra(char letra) {
@@ -45,9 +61,29 @@ public class AgendaContactos {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return ArrayList<Contacto> una lista con los contactos que hay que felicitar
+	 */
 	public List<Personal> felicitar() {
-
-		return null;
+		ArrayList<Personal> lista = new ArrayList<>();
+		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
+		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
+		while(it.hasNext()) {
+			Map.Entry<Character,Set<Contacto>> entrada = it.next();
+			Set<Contacto> contactos = entrada.getValue();
+			Iterator<Contacto> it2 = contactos.iterator();
+			while(it2.hasNext()) {
+				Contacto contacto = it2.next();
+				if(contacto instanceof Personal){
+					Personal personal = (Personal) contacto;
+					if(personal.esCumpleanos()) {
+						lista.add(personal);
+					}
+				}
+			}
+		}
+		return lista;
 	}
 
 	public void personalesPorRelacion() {
@@ -55,9 +91,31 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
+		ArrayList<Personal> lista = new ArrayList<>();
+		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
+		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
+		while(it.hasNext()) {
+			Map.Entry<Character,Set<Contacto>> entrada = it.next();
+			Set<Contacto> contactos = entrada.getValue();
+			Iterator<Contacto> it2 = contactos.iterator();
+			while(it2.hasNext()) {
+				Contacto contacto = it2.next();
+				if(contacto instanceof Personal){
+					Personal personal = (Personal) contacto;
+					lista.add(personal);
+				}
+			}
+		}
+		
+		Collections.sort(lista, new Comparator<Personal>() {
 
-		return null;
-
+			@Override
+			public int compare(Personal o1, Personal o2) {
+				return o1.getFecha_nacimiento().compareTo(o2.getFecha_nacimiento());
+			}
+			
+		});		
+		return lista;
 	}
 
 }
