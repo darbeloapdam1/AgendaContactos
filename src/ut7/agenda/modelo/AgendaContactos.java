@@ -1,4 +1,5 @@
 package ut7.agenda.modelo;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class AgendaContactos {
 	public void contactosEnLetra() {
 
 	}
-
+	
 	public void totalContactos() {
 
 	}
@@ -28,8 +29,13 @@ public class AgendaContactos {
 		return null;
 	}
 
+	/**
+	 *  @return ArrayList<Contacto> lista de contactos que contienen en su nombre o apellido el texto
+	 */
+	
 	public List<Contacto> buscarContactos(String texto) {
-
+		ArrayList<Contacto> lista = new ArrayList<>();
+		
 		return null;
 
 	}
