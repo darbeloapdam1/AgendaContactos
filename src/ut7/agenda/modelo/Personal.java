@@ -36,13 +36,6 @@ public class Personal extends Contacto {
 	public String getFirmaEmail() {
 		return "Un abrazo!!";
 	}
-	/**
-	 * Metod privado para ver la abreviacion del mes
-	 */
-	private String queMes(int mes) {
-		String[] meses = {"ene.","feb.","mar.","abr.","may.","jun.","jul.","ago.","sep.","oct.","nov.","dic."};
-		return meses[mes];
-	}
 	
 	@Override
 	public String toString() {
