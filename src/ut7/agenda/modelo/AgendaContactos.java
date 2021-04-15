@@ -6,24 +6,33 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class AgendaContactos {
 	private Map<Character, Set<Contacto>> agenda;
 
 	public AgendaContactos() {
-
+		this.agenda = new TreeMap<>();
 	}
 
 	public void añadirContacto(Contacto con) {
-
+		if(!agenda.containsKey(con.getPrimeraLetra())){
+            TreeSet<Contacto> cont = new TreeSet<>();
+            cont.add(con);
+            agenda.put(con.getPrimeraLetra(), cont);
+        }else{
+        	agenda.get(con.getPrimeraLetra()).add(con);
+             }
 	}
 
-	public void contactosEnLetra() {
-
+	public Set<Contacto> contactosEnLetra(char letra) {
+		return this.agenda.get(letra);
 	}
 	
-	public void totalContactos() {
-
+	public int totalContactos() {
+		return this.agenda.size();
+		
 	}
 
 	@Override
@@ -57,10 +66,18 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesEnLetra(char letra) {
-
-		return null;
+		ArrayList<Personal> p = new ArrayList<>();
+		if(agenda.containsKey(letra)) {
+			for(Contacto con : agenda.get(letra)) {
+				if(con instanceof Personal) {
+					p.add((Personal) con);
+				}else {
+					return null;
+				}
+			}
+		}
+		return p;
 	}
-
 	/**
 	 * 
 	 * @return ArrayList<Contacto> una lista con los contactos que hay que felicitar
