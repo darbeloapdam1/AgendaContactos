@@ -86,8 +86,8 @@ public class AgendaContactos {
 		return lista;
 	}
 
-	public void personalesPorRelacion() {
-
+	public Map<Relacion, List<String>> personalesPorRelacion() {
+		return null;
 	}
 
 	/**
