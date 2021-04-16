@@ -9,7 +9,7 @@ public class Personal extends Contacto {
 	public Personal(String nombre, String apellidos, String telefono, String email, String fecha, Relacion relacion) {
 		super(nombre, apellidos, telefono, email);
 		String[] fechaNa = fecha.split("/");
-		String nuevaFecha = fechaNa[2] + "-" + fechaNa[1] + "-" + fechaNa[0];
+		String nuevaFecha = fechaNa[2].trim() + "-" + fechaNa[1].trim() + "-" + fechaNa[0].trim();
 		fecha_nacimiento = LocalDate.parse(nuevaFecha);	
 		this.setRelacion(relacion);
 	}

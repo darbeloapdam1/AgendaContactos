@@ -47,7 +47,7 @@ public class AgendaIO {
 	private static Relacion queRelacion(String relacion2) {
 		Relacion[] relaciones = Relacion.values();
 		for(Relacion rel: relaciones) {
-			if(rel.getRelacion().equalsIgnoreCase(relacion2)) {
+			if(rel.getRelacion().equalsIgnoreCase(relacion2.trim())) {
 				return rel;
 			}
 		}
