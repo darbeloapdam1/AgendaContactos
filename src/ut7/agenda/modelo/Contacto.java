@@ -49,7 +49,7 @@ public abstract class Contacto implements Comparable<Contacto> {
 	}
 	
 	public char getPrimeraLetra() {
-		return apellidos.charAt(0);
+		return apellidos.toUpperCase().charAt(0);
 	}
 	
 	public abstract String getFirmaEmail();

@@ -42,7 +42,7 @@ public class Profesional extends Contacto {
 	
 	@Override
 	public String toString() {
-		String str = ("\n" + super.toString() + "\nEmpresa: " + empresa);
+		String str = ("\n" + super.toString() + "\nEmpresa: " + empresa + "\n");
 		return str;
 	}
 	
