@@ -31,14 +31,32 @@ public class AgendaContactos {
 	}
 	
 	public int totalContactos() {
-		return this.agenda.size();
+		int total = 0;
+		Set<Character> claves = agenda.keySet();
+		for(Character clave: claves) {
+			total += agenda.get(clave).size();
+		}
+		return total;
 		
 	}
 
 	@Override
 	public String toString() {
-
-		return null;
+		StringBuilder sb = new StringBuilder("AGENDA CONTACTOS\n");
+		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
+		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
+		while(it.hasNext()) {
+			Map.Entry<Character,Set<Contacto>> entrada = it.next();
+			sb.append(entrada.getKey() + " (" + contactosEnLetra(entrada.getKey()).size() + " contacto/s)\n");
+			Set<Contacto> contacto = entrada.getValue();
+			Iterator<Contacto> it2 = contacto.iterator();
+			while(it2.hasNext()) {
+				Contacto con = it2.next();
+				sb.append(con.toString() + "\n");
+			}
+		}
+		sb.append("(" + totalContactos() + " contacto/s)");
+		return sb.toString();
 	}
 
 	/**
@@ -71,8 +89,6 @@ public class AgendaContactos {
 			for(Contacto con : agenda.get(letra)) {
 				if(con instanceof Personal) {
 					p.add((Personal) con);
-				}else {
-					return null;
 				}
 			}
 		}
