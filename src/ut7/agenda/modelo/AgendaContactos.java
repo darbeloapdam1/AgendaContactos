@@ -82,9 +82,13 @@ public class AgendaContactos {
 	}
 
 	public List<Personal> personalesEnLetra(char letra) {
-		ArrayList<Personal> p = new ArrayList<>();
-		if(agenda.containsKey(letra)) {
-			for(Contacto con : agenda.get(letra)) {
+		ArrayList<Personal> p = null;
+		String letraMayus = letra + "";
+		letraMayus = letraMayus.toUpperCase();
+		Character letraNueva = letraMayus.charAt(0);
+		if(agenda.containsKey(letraNueva)) {			
+			p = new ArrayList<>();
+			for(Contacto con : agenda.get(letraNueva)) {
 				if(con instanceof Personal) {
 					p.add((Personal) con);
 				}
@@ -129,7 +133,10 @@ public class AgendaContactos {
 	
 	public List<Personal> personalesOrdenadosPorFechaNacimiento(char letra) {
 		ArrayList<Personal> lista = new ArrayList<>();
-		Set<Contacto> contactos = agenda.get(letra);
+		String letraMayus = letra + "";
+		letraMayus = letraMayus.toUpperCase();
+		Character letraNueva = letraMayus.charAt(0);
+		Set<Contacto> contactos = agenda.get(letraNueva);
 		Iterator<Contacto> it = contactos.iterator();
 		while(it.hasNext()) {
 			Contacto contacto = it.next();
