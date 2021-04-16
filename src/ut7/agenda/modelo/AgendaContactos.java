@@ -122,7 +122,23 @@ public class AgendaContactos {
 	}
 
 	public Map<Relacion, List<String>> personalesPorRelacion() {
-		return null;
+		Map<Relacion, List<String>> personales = new TreeMap<>();
+        Iterator<Map.Entry<Character, Set<Contacto>>> it = this.agenda.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Character, Set<Contacto>> map = it.next();
+            for (Contacto contacto : map.getValue()){
+                if (contacto instanceof Personal){
+                    if (personales.containsKey(((Personal) contacto).getRelacion()))
+                        personales.get(((Personal) contacto).getRelacion()).add(contacto.getNombre() + " " + contacto.getApellidos());
+                    else{
+                        List<String> lista = new ArrayList<>();
+                        lista.add(contacto.getNombre() + " " + contacto.getApellidos());
+                        personales.put((((Personal) contacto).getRelacion()), lista);
+                    }
+                }
+            }
+        }
+        return personales;
 	}
 
 	/**
