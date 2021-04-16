@@ -65,18 +65,16 @@ public class AgendaContactos {
 	
 	public List<Contacto> buscarContactos(String texto) {
 		ArrayList<Contacto> lista = new ArrayList<>();
-		Set<Map.Entry<Character,Set<Contacto>>> entradas = agenda.entrySet();
-		Iterator<Map.Entry<Character,Set<Contacto>>> it = entradas.iterator();
-		while(it.hasNext()) {
-			Map.Entry<Character,Set<Contacto>> entrada = it.next();
-			Set<Contacto> contactos = entrada.getValue();
-			Iterator<Contacto> it2 = contactos.iterator();
-			while(it2.hasNext()) {
-				Contacto contacto = it2.next();
-				if(contacto.getApellidos().contains(texto)) {
-					lista.add(contacto);
-				}else if(contacto.getNombre().contains(texto)) {
-					lista.add(contacto);
+		Set<Character> claves = agenda.keySet();
+		for(Character clave : claves) {
+			Set<Contacto> contactos = agenda.get(clave);
+			Iterator<Contacto> it = contactos.iterator();
+			while(it.hasNext()) {
+				Contacto con = it.next();
+				String nombre = con.getNombre().toLowerCase();
+				String apellidos = con.getApellidos().toLowerCase();
+				if(nombre.contains(texto) || apellidos.contains(texto)) {
+					lista.add(con);
 				}
 			}
 		}
